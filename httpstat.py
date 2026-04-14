@@ -327,6 +327,8 @@ def main():
     is_debug = parse_bool(ENV_DEBUG.get('false'))
 
     # backward compat: HTTPSTAT_METRICS_ONLY → --format json
+    if metrics_only:
+        print("Warning: HTTPSTAT_METRICS_ONLY is deprecated, use --format json instead", file=sys.stderr)
     if metrics_only and output_format == 'pretty':
         output_format = 'json'
 
